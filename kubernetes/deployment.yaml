@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: python-api-deployment
+  namespace: backend-api
+  labels:
+    app: python-api-deployment
+    app.kubernetes.io/name: python-api-deployment
+    app.kubernetes.io/version: v1.0
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: python-api
+      app.kubernetes.io/name: python-api
+  template:
+    metadata:
+      labels:
+        app: python-api
+        app.kubernetes.io/name: python-api
+    spec:
+      containers:
+      - name: python-api
+        image: sauravm/demo-cicd:manualBuild_v1
+        ports:
+        - containerPort: 5000
+          name: flask
+          protocol: TCP

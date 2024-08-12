@@ -1,0 +1,29 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: python-api-ingress
+  namespace: backend-api
+  labels:
+    app: python-api-ingress
+    app.kubernetes.io/name: python-api-ingress
+    app.kubernetes.io/version: v1.0
+  annotations:
+    nginx.ingress.kubernetes.io/backend-protocol: HTTP
+    nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: python-api.local
+    http:
+      paths:
+      - backend:
+          service:
+            name: python-api-service
+            port:
+              number: 80
+        path: /
+        pathType: Prefix
+  tls:
+  - hosts:
+    - python-api.local
+    secretName: python-api-tls
