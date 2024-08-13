@@ -21,7 +21,7 @@ spec:
     spec:
       containers:
       - name: python-api
-        image: sauravm/demo-cicd:7f282a3ea9c18f146371a5349e0f5873bfa01536
+        image: sauravm/demo-cicd:5ab4263103696c404545d0ec673b0e97cdc3b2d3
         ports:
         - containerPort: 5000
           name: flask
