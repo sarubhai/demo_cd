@@ -3,5 +3,4 @@ kind: Namespace
 metadata:
   name: backend-api
   labels:
-    name: backend-api
-    kubernetes.io/metadata.name: backend-api
+    app: backend-api
